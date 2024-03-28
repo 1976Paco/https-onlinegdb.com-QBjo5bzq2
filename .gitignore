@@ -1,0 +1,78 @@
+#include <iostream>//declaracion de librerias//
+#include <string.h>
+
+
+using namespace std;//para poder pedir datos alñ usuario sin usar std:://
+
+string nombre, apellido1, apellido2,apellido3,
+resp, dia, mes, anio,rfc, RFC, palabras_inc[41],ape;//variables//
+int i=0;//inie el ietrador para las palabras inc, para substr, para cambiar a mayusculas
+
+
+
+int main(){//funcion principal 
+string palabras_inc[]={"BUEI","BUY","CACA","CACO","CAGA",
+"CAGO","CAKA","CAKO","COGE","COJA","COGE","COJO","KAKA",
+"KULO","MAME","MAMO","NEAR","MEAS","MEON","MION","COJE",
+"CIJI","COJO","CULO","FETO","GUEY","JOTO","KACA","KACO",
+"KAGA","KAGO","MOCO","MULA","PEDA","PEDO","PENE","PUTA",
+"PUTO","QULO","RATA","RUIN"};//declaracion de palabras inconvenientes
+
+std::cout<<"¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡BIENENIDOS¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡\n \n<<<<<<<<<<<<A3: Calculo de RFC>>>>>>>>>>>>>>>\n \n>>>>>>>";
+     std::cout<<"         introduce tu primer nombre:\n";//1er dato a pedir
+     std::cin>>nombre;//se asigna a la variable 
+     std::cout<<"         introduce tu apellido parteno: \n";
+     std::cin>>apellido3;
+     
+ cout<<"         cuentas con apellido materno?(si/no):\n";
+     std::cin>>resp;//asignacion de la variable a la pregunta
+     if(resp== "si"){// si la respuesta es si entonces
+     std::cout<<"\n          Introduce tu apellido materno:\n";//se pide
+     std::cin>>apellido2;}//y se asigna
+     else{apellido2 = "x" ;}//si es no es asigna una x
+    
+    
+    
+    
+    
+    std::cout<<         "Introduce tu fecha de nacimiento (solo numeros)\n \n";//continuamos
+    std::cout<<"                       Dia(dd):\n";//con la solicitud de datos
+    std::cin>>dia;
+    std::cout<<"                       Mes(mm) \n";
+    std::cin>>mes;
+    std::cout<<"                       año(aaaa):\n";
+    std::cin>>anio;
+    
+    
+    
+    
+  for(int i=0; i<nombre.length(); i++){//cambiamos a mayusculas//
+  nombre[i] =toupper(nombre[i]); }//el nombre//
+for(int i=0; i <apellido3.length(); i++){//cambiamos a mayusculas
+  apellido3[i] =toupper(apellido3[i]);}//el apellidopaterno
+ for(int i=0; i<apellido2.length(); i++){//cambiamos a mayusculas 
+ apellido2[i] = toupper(apellido2[i]);}//en apellidomaterno
+ 
+ 
+ 
+ 
+ nombre = nombre.substr(0,1);//extraemos las letras que ocupamos
+ apellido1 = apellido3.substr(0,1);
+ apellido2 = apellido2.substr(0,1);
+ anio = anio.substr(2,4);// aqui como comienza en cero ponemos una posicion antes del que ocupamos//
+ 
+ 
+ 
+for (int i = 1; i <= apellido3.length(); i++){//iniciamos el ciclo en uno para que no tome la primera letras
+ape = apellido3.substr(i, 1);
+if (ape == "A" || ape == "E" || ape == "I" || ape == "o" || ape == "U"){ apellido3 = ape;break;}}
+
+
+rfc=apellido1+apellido3+apellido2+nombre;//otra variable llamada rfc guardara solo el nombre para la comparacion 
+   for(int i=0;i <41; i++){//ciclo para recorrer el arreglo
+   if(rfc==palabras_inc[i]){rfc =apellido1+apellido3+apellido2+'x';}//si el arreglo es igual cambiara el nombre
+   RFC = rfc+anio+mes+dia;}//declaramos la salida//
+   std::cout<<"<<<<<<<<<< Tu RFC si homoclave es:"<<RFC;//asignamos la salida
+   cout<<">>>>>>>>>>>>"<<endl;
+  return 0;
+}
